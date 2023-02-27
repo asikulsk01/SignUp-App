@@ -132,4 +132,14 @@
         android:backgroundTint="@color/yellow"
         android:text="Sign up" />
 
+    <TextView
+        android:id="@+id/tvSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:textColor="@color/yellow"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Alredy have an account. Click to sign In" />
+
 </LinearLayout>
