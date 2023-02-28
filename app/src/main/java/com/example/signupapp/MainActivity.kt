@@ -37,26 +37,32 @@ class MainActivity : AppCompatActivity() {
             val phone= etPhone.text.toString()
             val password= etPassword.text.toString()
 
-            //Object creation of User Kotlin class
-            val user = User(uname, name, email, phone, password)
+            //Check if user name is not empty
+            if (uname.isNotEmpty() && name.isNotEmpty() && email.isNotEmpty() && phone.isNotEmpty() && password.isNotEmpty()){
+                //Object creation of User Kotlin class
+                val user = User(uname, name, email, phone, password)
 
-            database = FirebaseDatabase.getInstance().getReference("Users")
+                database = FirebaseDatabase.getInstance().getReference("Users")
 
-            //Adding values into the database and display Toast message.
-            database.child(uname).setValue(user).addOnSuccessListener {
+                //Adding values into the database and display Toast message.
+                database.child(uname).setValue(user).addOnSuccessListener {
 
-                //After submission all field will be cleared.
-                etUserName.text?.clear()
-                etName.text?.clear()
-                etEmail.text?.clear()
-                etPhone.text?.clear()
-                etPassword.text?.clear()
+                    //After submission all field will be cleared.
+                    etUserName.text?.clear()
+                    etName.text?.clear()
+                    etEmail.text?.clear()
+                    etPhone.text?.clear()
+                    etPassword.text?.clear()
 
-                Toast.makeText(this,"User has been registered", Toast.LENGTH_SHORT).show()
-            }.addOnCanceledListener {
-                Toast.makeText(this,"User not registered",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,"User has been registered", Toast.LENGTH_SHORT).show()
+                }.addOnCanceledListener {
+                    Toast.makeText(this,"User not registered",Toast.LENGTH_SHORT).show()
+                }
+
             }
-
+            else{
+                Toast.makeText(this,"Please fill the form correctly",Toast.LENGTH_SHORT).show()
+            }
         }
 
 
